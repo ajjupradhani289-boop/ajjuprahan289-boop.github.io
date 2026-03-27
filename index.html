@@ -8,9 +8,9 @@
     <style>
         body { background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; }
         .glow-text { background: linear-gradient(90deg, #3b82f6, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card-blur { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .card-blur { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
+        .card-blur:hover { border-color: rgba(255, 255, 255, 0.2); transform: translateY(-3px); }
         .hidden { display: none !important; }
-        /* Smooth transition for modal */
         #registerModal { transition: opacity 0.3s ease-in-out; }
     </style>
 </head>
@@ -18,7 +18,7 @@
 
     <header class="sticky top-0 z-50 p-4 border-b border-gray-900 bg-black/80 backdrop-blur-lg">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
-            <h1 class="text-xl font-bold glow-text tracking-widest uppercase cursor-pointer" onclick="navigateTo('hero')">AgenticFlow</h1>
+            <h1 class="text-xl font-bold glow-text tracking-widest uppercase cursor-pointer" onclick="navigateTo('hero')">AgenticFlow AI</h1>
             <nav class="hidden md:flex gap-6 text-sm text-gray-400 font-medium">
                 <a href="#" class="hover:text-white transition-colors" onclick="navigateTo('features')">Features</a>
                 <a href="#" class="hover:text-white transition-colors" onclick="navigateTo('demo')">Demo</a>
@@ -26,8 +26,7 @@
                 <a href="#" class="hover:text-white transition-colors" onclick="navigateTo('community')">Community</a>
             </nav>
             <div class="flex gap-2">
-                <button class="bg-blue-600/10 text-blue-400 px-4 py-1.5 rounded-full text-xs hover:bg-blue-600/20 transition-all">Sign In</button>
-                <button class="bg-white text-black px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-all" onclick="openModal()">Get Started Free</button>
+                <button class="bg-white text-black px-5 py-2 rounded-full text-xs font-bold hover:scale-105 transition-all" onclick="openModal()">Get Started Free</button>
             </div>
         </div>
     </header>
@@ -40,89 +39,75 @@
                 Zero-Touch <br><span class="glow-text">AI Engineering.</span>
             </h2>
             <p class="max-w-2xl text-gray-500 text-lg md:text-xl mb-14 font-light leading-relaxed">
-                The ecosystem's first autonomous orchestration engine. Abstract requirements to production deployment. No human. No friction. Just Flow.
+                The world's first autonomous multi-agent orchestration engine for the AWS ecosystem. We handle abstract requirements to production deployment. No humans. No friction. Just Flow.
             </p>
             <div class="flex flex-col sm:flex-row gap-5 w-full justify-center">
-                <button class="bg-white text-black px-12 py-4 rounded-xl font-bold hover:scale-105 transition-all text-lg" onclick="openModal()">Launch Private Alpha</button>
-                <button class="card-blur px-12 py-4 rounded-xl font-bold hover:bg-white/5 transition-all text-gray-300 text-lg">Read Technical Specs</button>
+                <button class="bg-white text-black px-12 py-4 rounded-xl font-bold hover:scale-105 transition-all text-lg" onclick="openModal()">Start Your Pipeline</button>
+                <button class="card-blur px-12 py-4 rounded-xl font-bold hover:bg-white/5 transition-all text-gray-300 text-lg">Download Technical Docs</button>
             </div>
         </div>
 
         <section id="features-section" class="hidden max-w-7xl mx-auto px-6 py-20">
-            <h2 class="text-5xl font-extrabold mb-16 tracking-tight text-center">Core Autonomous capabilities.</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card-blur p-10 rounded-2xl flex flex-col gap-4">
-                    <span class="text-4xl">🤖</span>
-                    <h3 class="text-2xl font-bold text-white">Advanced Agent Orchestration</h3>
-                    <p class="text-gray-400">Leverage multiple intelligent agents designed specifically for Bedrock. From architecting DynamoDB tables to writing optimized Python functions, our ecosystem handles the entire logic.</p>
+            <h2 class="text-5xl font-extrabold mb-16 tracking-tight text-center">Autonomous capacidades.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-blur p-10 rounded-2xl flex flex-col gap-4 text-center">
+                    <span class="text-4xl">🤖Orchestration</span>
+                    <h3 class="text-xl font-bold glow-text">Bedrock Native</h3>
+                    <p class="text-gray-400 text-sm">Autonomous orchestration of Claude 3.5 Sonnet and Llama 3 models within AWS security boundaries. Specific IAM control for safe execution.</p>
                 </div>
-                <div class="card-blur p-10 rounded-2xl flex flex-col gap-4">
-                    <span class="text-4xl">⚡️</span>
-                    <h3 class="text-2xl font-bold text-white">Full Automated Debugging</h3>
-                    <p class="text-gray-400">Agents monitor the CI/CD pipeline. When an error occurs, an Optimizer Agent instantly isolates the bug, suggests a fix, and auto-generates a Pull Request for review.</p>
+                <div class="card-blur p-10 rounded-2xl flex flex-col gap-4 text-center">
+                    <span class="text-4xl">⚡️Automation</span>
+                    <h3 class="text-xl font-bold glow-text">End-to-End CI/CD</h3>
+                    <p class="text-gray-400 text-sm">Agents monitor the entire code lifecycle. Bugs are isolated, fixed, and auto-generated as pull requests without human developer intervention.</p>
                 </div>
-                <div class="card-blur p-10 rounded-2xl flex flex-col gap-4">
-                    <span class="text-4xl">🏗️</span>
-                    <h3 class="text-2xl font-bold text-white">Zero-Config Infrastructure</h3>
-                    <p class="text-gray-400">Define the requirement and the system handles deployment on AWS Lambda and Fargate container fleets using infrastructure-as-code principles, fully automated.</p>
-                </div>
-                <div class="card-blur p-10 rounded-2xl flex flex-col gap-4">
-                    <span class="text-4xl">🔐</span>
-                    <h3 class="text-2xl font-bold text-white">Enterprise-Ready Security</h3>
-                    <p class="text-gray-400">All data orchestration and model fine-tuning happen within AWS security boundaries. We leverage Amazon IAM for fine-grained agent access control to S3 buckets.</p>
+                <div class="card-blur p-10 rounded-2xl flex flex-col gap-4 text-center">
+                    <span class="text-4xl">🏗️Scalability</span>
+                    <h3 class="text-xl font-bold glow-text">Cloud-Native Execution</h3>
+                    <p class="text-gray-400 text-sm">Define your architecture and the system automatically provisions Lambda functions and Fargate containers with infrastructure-as-code principles.</p>
                 </div>
             </div>
         </section>
 
         <section id="demo-section" class="hidden max-w-5xl mx-auto px-6 py-20">
-            <h2 class="text-5xl font-extrabold mb-16 tracking-tight text-center">Simulated Agent Environment.</h2>
-            <div class="card-blur p-6 rounded-2xl font-mono text-sm">
+            <h2 class="text-5xl font-extrabold mb-16 tracking-tight text-center">Simulated Agent Output.</h2>
+            <div class="card-blur p-6 rounded-2xl font-mono text-xs md:text-sm">
                 <div class="flex gap-2 border-b border-gray-800 pb-3 mb-4">
                     <div class="w-3 h-3 bg-red-500 rounded-full"></div>
                     <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
                     <div class="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
-                <div class="text-gray-500">
-                    <p class="text-gray-300">$ Requirement: "Build a serverless user auth system."</p>
-                    <p>> Initiating Agent Orchestrator...</p>
-                    <p class="text-blue-400">... Creating Architect Agent...</p>
-                    <p>Architect Agent: IAM Role defined (Lambda + S3 access).</p>
-                    <p>Architect Agent: DynamoDB Schema (Users table) created.</p>
-                    <p class="text-purple-400">... Spawning Optimizer Agent...</p>
-                    <p>Optimizer Agent: Generated Python signup function (using AWS SDK).</p>
-                    <p class="text-green-400">Fixing error: Optimizer isolated issue in login loop.</p>
-                    <p>> Deployment Initiated on AWS...</p>
-                    <p class="text-gray-300">... SUCCESS: Pipeline is Zero-Touch Optimal.</p>
+                <div class="text-gray-500 space-y-1.5">
+                    <p class="text-gray-300">$ Requirement: "Build a serverless user authentication system."</p>
+                    <p class="text-blue-400">> Loading Amazon Bedrock orchestration configs...</p>
+                    <p>> Spawning Architect Agent...</p>
+                    <p>... Architect Agent: Defining IAM policies for Lambda + DynamoDB...</p>
+                    <p>... Architect Agent: Creating Users table in DynamoDB (Schema set)...</p>
+                    <p class="text-purple-400">> Spawning Optimizer Agent...</p>
+                    <p>... Optimizer Agent: Generated Python signup function (using boto3)...</p>
+                    <p class="text-green-400">> Fixing Error: Optimizer isolated issue in login loop (Fixed)...</p>
+                    <p>> Automated Deployment Initiated via AWS CloudFormation...</p>
+                    <p class="text-gray-300">> SUCCESS: Zero-Touch Pipeline is Optimal.</p>
                 </div>
             </div>
         </section>
 
         <section id="pricing-section" class="hidden max-w-6xl mx-auto px-6 py-20">
-            <h2 class="text-5xl font-extrabold mb-16 tracking-tight text-center">Transparent Pricing.</h2>
+            <h2 class="text-5xl font-extrabold mb-16 tracking-tight text-center">Transparency First.</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="card-blur p-8 rounded-2xl flex flex-col justify-between">
                     <div>
                         <h4 class="text-gray-400 mb-2 uppercase text-xs tracking-widest">Private Alpha</h4>
                         <p class="text-5xl font-extrabold mb-8">$0<span class="text-sm font-medium text-gray-500">/mo</span></p>
-                        <ul class="text-gray-400 text-sm space-y-3 mb-10">
-                            <li>• 1 Autonomous Agent</li>
-                            <li>• Basic Bedrock Integration</li>
-                            <li>• Lambda Serverless Deploy</li>
-                        </ul>
+                        <ul class="text-gray-400 text-sm space-y-3 mb-10"><li>• 1 Autonomous Agent</li><li>• Basic Bedrock Access</li><li>• Lambda Deploy Support</li></ul>
                     </div>
-                    <button class="w-full card-blur px-8 py-3 rounded-lg hover:bg-white/5transition-all" onclick="openModal()">Join waitlist</button>
+                    <button class="w-full card-blur px-8 py-3 rounded-lg hover:bg-white/5 transition-all text-xs" onclick="openModal()">Join Waitlist</button>
                 </div>
                 <div class="card-blur p-8 rounded-2xl flex flex-col justify-between border-2 border-purple-800">
                     <div>
                         <span class="bg-purple-900/30 text-purple-400 px-3 py-0.5 rounded-full text-xs font-medium mb-4 inline-block">MOST POPULAR</span>
                         <h4 class="text-gray-400 mb-2 uppercase text-xs tracking-widest">Startup Pro</h4>
                         <p class="text-5xl font-extrabold mb-8">$99<span class="text-sm font-medium text-gray-500">/mo</span></p>
-                        <ul class="text-gray-400 text-sm space-y-3 mb-10">
-                            <li>• 5 Autonomous Agents</li>
-                            <li>• Advanced Model Orchestration</li>
-                            <li>• CI/CD Pipeline Monitoring</li>
-                            <li>• DynamoDB Native Support</li>
-                        </ul>
+                        <ul class="text-gray-400 text-sm space-y-3 mb-10"><li>• 5 Autonomous Agents</li><li>• Advanced model Orchestration</li><li>• CI/CD Pipeline Monitoring</li><li>• DynamoDB Native Support</li></ul>
                     </div>
                     <button class="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105" onclick="openModal()">Get Started Free</button>
                 </div>
@@ -130,35 +115,25 @@
                     <div>
                         <h4 class="text-gray-400 mb-2 uppercase text-xs tracking-widest">Enterprise</h4>
                         <p class="text-5xl font-extrabold mb-8">Custom</p>
-                        <ul class="text-gray-400 text-sm space-y-3 mb-10">
-                            <li>• Unlimited Agents</li>
-                            <li>• Dedicated Bedrock Compute</li>
-                            <li>• On-Prem Deployment</li>
-                            <li>• White-Glove SLA Support</li>
-                        </ul>
+                        <ul class="text-gray-400 text-sm space-y-3 mb-10"><li>• Unlimited Agents</li><li>• Dedicated Bedrock Compute</li><li>• On-Prem Deployment</li><li>• White-Glove Support</li></ul>
                     </div>
-                    <button class="w-full card-blur px-8 py-3 rounded-lg hover:bg-white/5 transition-all">Contact Sales</button>
+                    <button class="w-full card-blur px-8 py-3 rounded-lg hover:bg-white/5 transition-all text-xs">Contact Sales</button>
                 </div>
             </div>
         </section>
 
         <section id="community-section" class="hidden max-w-7xl mx-auto px-6 py-20">
-            <h2 class="text-5xl font-extrabold mb-16 tracking-tight text-center">Ecosystem Support & Resources.</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <h2 class="text-5xl font-extrabold mb-16 tracking-tight text-center">Ecosystem Support.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
                 <div class="card-blur p-10 rounded-2xl">
-                    <h3 class="text-2xl font-bold mb-4">Help Center</h3>
-                    <p class="text-gray-400 mb-8">Comprehensive documentation on setting up autonomous agents and integrating AWS services securely.</p>
-                    <a href="#" class="text-blue-400 text-sm hover:underline">View Documentation -></a>
+                    <h3 class="text-xl font-bold mb-4">Help Center</h3>
+                    <p class="text-gray-400 mb-8 text-sm">Comprehensive documentation on setting up autonomous agents and integrating AWS ecosystem securely.</p>
+                    <a href="#" class="text-blue-400 text-xs hover:underline">View Documentation -></a>
                 </div>
                 <div class="card-blur p-10 rounded-2xl">
-                    <h3 class="text-2xl font-bold mb-4">Community Discord</h3>
-                    <p class="text-gray-400 mb-8">Join the developers, engineers, and founders shaping the future of zero-touch coding.</p>
-                    <a href="#" class="text-blue-400 text-sm hover:underline">Join the Discord -></a>
-                </div>
-                <div class="card-blur p-10 rounded-2xl col-span-1 md:col-span-2">
-                    <h3 class="text-2xl font-bold mb-4">Feedback Loop</h3>
-                    <p class="text-gray-400 mb-8">Help us optimize the orchestrator agent. Share your feature requests or bug reports directly.</p>
-                    <button class="bg-white/10 text-white px-6 py-2 rounded-lg text-sm hover:bg-white/15 transition-all">Submit Feedback</button>
+                    <h3 class="text-xl font-bold mb-4">Feedback Loop</h3>
+                    <p class="text-gray-400 mb-8 text-sm">Help us optimize the orchestrator agent. Share your feature requests or bug reports directly.</p>
+                    <button class="bg-white/10 text-white px-6 py-2 rounded-lg text-xs hover:bg-white/15 transition-all">Submit Feedback</button>
                 </div>
             </div>
         </section>
@@ -166,72 +141,38 @@
     </div>
 
     <div id="registerModal" class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/90 opacity-0 hidden">
-        <div class="card-blur p-10 rounded-3xl max-w-md w-full relative">
+        <div class="card-blur p-10 rounded-3xl max-w-sm w-full relative">
             <button class="absolute top-6 right-6 text-gray-600 hover:text-white" onclick="closeModal()">X</button>
-            <h3 class="text-3xl font-extrabold mb-2 glow-text tracking-tight">Access the Future.</h3>
-            <p class="text-gray-500 mb-10 text-sm">Create your free "Startup Pro" test account.</p>
-            <form class="space-y-5" onsubmit="event.preventDefault(); closeModal();">
+            <h3 class="text-2xl font-extrabold mb-2 glow-text tracking-tight">Access the Future.</h3>
+            <p class="text-gray-500 mb-8 text-xs">Create your free "Startup Pro" test account.</p>
+            <form class="space-y-4" onsubmit="event.preventDefault(); closeModal();">
                 <input type="text" placeholder="Startup Name (e.g. AgenticFlow AI)" class="w-full bg-transparent border border-gray-800 p-3 rounded-lg text-sm focus:border-purple-600 outline-none">
                 <input type="email" placeholder="Professional Email (e.g. founder@agenticflow.ai)" class="w-full bg-transparent border border-gray-800 p-3 rounded-lg text-sm focus:border-purple-600 outline-none">
-                <input type="password" placeholder="Password" class="w-full bg-transparent border border-gray-800 p-3 rounded-lg text-sm focus:border-purple-600 outline-none">
-                <div class="flex items-center gap-2 pt-4">
+                <div class="flex items-center gap-2 pt-2">
                     <input type="checkbox" id="terms" class="accent-purple-600">
-                    <label for="terms" class="text-xs text-gray-500">I agree to the Alpha access and security agreements.</label>
+                    <label for="terms" class="text-xs text-gray-500">I agree to Alpha access and security agreements.</label>
                 </div>
-                <button type="submit" class="w-full bg-white text-black py-3 rounded-lg font-bold hover:scale-105 transition-all mt-6">Create Alpha Account</button>
+                <button type="submit" class="w-full bg-white text-black py-3 rounded-lg font-bold hover:scale-105 transition-all mt-6 text-sm">Create Alpha Account</button>
             </form>
         </div>
     </div>
 
-    <footer class="p-10 border-t border-gray-900 bg-black max-w-7xl mx-auto w-full text-center">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-sm text-gray-500">
-            <div>Help Center</div>
-            <div>Feedback</div>
-            <div>Discord</div>
-            <div>X/Twitter</div>
+    <footer class="p-10 border-t border-gray-900 bg-black/50 text-center">
+        <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-sm text-gray-500 font-medium">
+            <a href="#" class="hover:text-white" onclick="navigateTo('community')">Help Center</a>
+            <a href="#" class="hover:text-white" onclick="navigateTo('community')">Feedback</a>
+            <a href="#" class="hover:text-white">Discord</a>
+            <a href="#" class="hover:text-white">X/Twitter</a>
         </div>
-        <p class="text-[10px] text-gray-700 uppercase tracking-[0.2em]">&copy; 2026 AgenticFlow AI &bull; Built for the Future &bull; Powered by AWS Ecosystem</p>
+        <p class="text-[10px] text-gray-700 uppercase tracking-[0.2em]">&copy; 2026 AgenticFlow AI &bull; Built for the Future &bull; Powered by AWS</p>
     </footer>
 
     <script>
-        // Pages Map: (Nav Click Name -> Section ID in HTML)
-        const pages = {
-            'hero': 'hero-section',
-            'features': 'features-section',
-            'demo': 'demo-section',
-            'pricing': 'pricing-section',
-            'community': 'community-section'
-        };
-
-        // Function 1: Simulate Page Navigation
-        function navigateTo(pageName) {
-            // Check if pageName exists in our map
-            if (!pages[pageName]) return;
-
-            // 1. Hide all main sections
-            Object.values(pages).forEach(sectionId => {
-                document.getElementById(sectionId).classList.add('hidden');
-            });
-
-            // 2. Show the selected section
-            document.getElementById(pages[pageName]).classList.remove('hidden');
-            
-            // 3. (Optional) Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Function 2: Modal Logic
+        const pages = {'hero': 'hero-section','features': 'features-section','demo': 'demo-section','pricing': 'pricing-section','community': 'community-section'};
+        function navigateTo(pageName) { if (!pages[pageName]) return; Object.values(pages).forEach(sectionId => { document.getElementById(sectionId).classList.add('hidden'); }); document.getElementById(pages[pageName]).classList.remove('hidden'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
         const modal = document.getElementById('registerModal');
-
-        function openModal() {
-            modal.classList.remove('hidden'); // Show element
-            setTimeout(() => { modal.style.opacity = '1'; }, 10); // Trigger opacity transition
-        }
-
-        function closeModal() {
-            modal.style.opacity = '0'; // Trigger opacity transition
-            setTimeout(() => { modal.classList.add('hidden'); }, 300); // Hide element after transition
-        }
+        function openModal() { modal.classList.remove('hidden'); setTimeout(() => { modal.style.opacity = '1'; }, 10); }
+        function closeModal() { modal.style.opacity = '0'; setTimeout(() => { modal.classList.add('hidden'); }, 300); }
     </script>
 </body>
 </html>
